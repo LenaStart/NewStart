@@ -15,7 +15,6 @@ public class HomeWorkApp {
 
     //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
     // С помощью цикла и условия заменить 0 на 1, 1 на 0;
-
     private static void massivOI() {
         int [] masIO = {1,0,0,1,1,1,0};
         for (int i = 0; i < masIO.length; i++) {
@@ -29,9 +28,9 @@ public class HomeWorkApp {
         System.out.println();
         System.out.println("____________________________________");
     }
+
     //2. Задать пустой целочисленный массив длиной 100.
     // С помощью цикла заполнить его значениями 1 2 3 4 5 6 7 8 … 100;
-
     private static void masssivIOO() {
         int [] masIOO = new int[100];
         int n = 1;
@@ -42,9 +41,9 @@ public class HomeWorkApp {
         System.out.println();
         System.out.println("____________________________________");
     }
+
     //3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом,
     // и числа меньшие 6 умножить на 2;
-
     private static void massivxTwo() {
         int[] masxTwo = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         for (int i = 0; i < masxTwo.length; i++) {
@@ -56,9 +55,9 @@ public class HomeWorkApp {
         System.out.println();
         System.out.println("____________________________________");
     }
+
     //4. Создать квадратный двумерный целочисленный массив,
     // и с помощью цикла(-ов) заполнить его диагональные элементы единицами
-
     private static void massivII() {
         int[][] masII = new int[5][5];
         int p = 0;
@@ -83,9 +82,9 @@ public class HomeWorkApp {
         }
         System.out.println("____________________________________");
     }
+
     //5. Написать метод, принимающий на вход два аргумента: len и initialValue,
     // и возвращающий одномерный массив типа int длиной len, каждая ячейка которого равна initialValue;
-
     private static void initialValueLen() {
         int len = 5;
         int initialValue = 77;
@@ -98,8 +97,8 @@ public class HomeWorkApp {
         System.out.println();
         System.out.println("____________________________________");
     }
-    //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
 
+    //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
     private static void minMax() {
         int[] minmax = {12,56,1,12,33,115,4,-6};
         int max = minmax[0];
@@ -118,13 +117,17 @@ public class HomeWorkApp {
         System.out.printf("Минимальный элемент массива: %d Максимальный элемент массива: %d %n", max, min);
         System.out.println("____________________________________");
     }
-    //7. ** Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
 
+    //7. ** Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
     private static void equals() {
         int[] arr = {1,1,1,3};
+        int rav = arr[0];
+        int pr = 0;
 
         for (int num : arr) {
-            
+            if () {
+                pr += num;
+            }
         }
     }
 
