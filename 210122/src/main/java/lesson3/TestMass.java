@@ -34,7 +34,7 @@ public class TestMass {
 
         for (int i = 0; i < arrTwo.length; i++) {
             for (int j = 0; j < arrTwo[i].length; j++) {
-                System.out.print(arrTwo[i][j] + " ");
+                System.out.printf("%2d ", arrTwo[i][j]);
             }
             System.out.println();
         }
