@@ -8,8 +8,8 @@ public class HomeWorkApp {
         massivII();
         initialValueLen();
         minMax();
-        equals();
-
+        System.out.println(equals());
+        shift();
     }
 
 
@@ -18,12 +18,8 @@ public class HomeWorkApp {
     private static void massivOI() {
         int [] masIO = {1,0,0,1,1,1,0};
         for (int i = 0; i < masIO.length; i++) {
-            if (masIO[i] == 0) {
-                masIO[i] = 1;
-            } else {
-                masIO[i] = 0;
-            }
-            System.out.print(masIO[i] + " ");
+            int z = (masIO[i] == 0) ? 1:0;
+            System.out.print(z + " ");
         }
         System.out.println();
         System.out.println("____________________________________");
@@ -47,9 +43,7 @@ public class HomeWorkApp {
     private static void massivxTwo() {
         int[] masxTwo = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         for (int i = 0; i < masxTwo.length; i++) {
-            if (masxTwo[i] < 6) {
-                masxTwo[i] = masxTwo[i] * 2;
-            }
+            masxTwo[i] = (masxTwo[i] < 6) ? masxTwo[i] * 2 : masxTwo[i] * 1;
             System.out.print(masxTwo[i] + " ");
         }
         System.out.println();
@@ -66,19 +60,19 @@ public class HomeWorkApp {
        for (int i = 0; i < masII.length; i++) {
             for (int j = 0; j < masII.length; j++) {
                 masII[i][j] = 8;
-                if (i == p) {
+               if (i == p) {
                    if (j == v) {
                        masII[i][j] = 1;
                    }
                }
-                if (i == j) {
-                    masII[i][j] = 1;
-                }
+               if (i == j) {
+                   masII[i][j] = 1;
+               }
               System.out.print(masII[i][j] + " ");
             }
-           System.out.println();
             p++;
             v--;
+            System.out.println();
         }
         System.out.println("____________________________________");
     }
@@ -100,7 +94,7 @@ public class HomeWorkApp {
 
     //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
     private static void minMax() {
-        int[] minmax = {12,56,1,12,33,115,4,-6};
+        int[] minmax = {12,56,1,12,33,115,4,-6,-13,1500};
         int max = minmax[0];
         int min = minmax[0];
 
@@ -114,22 +108,64 @@ public class HomeWorkApp {
                 min = num;
             }
         }
-        System.out.printf("Минимальный элемент массива: %d Максимальный элемент массива: %d %n", max, min);
+        System.out.printf("Минимальный элемент массива: %d%nМаксимальный элемент массива: %d %n", min, max);
         System.out.println("____________________________________");
     }
 
-    //7. ** Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
-    private static void equals() {
-        int[] arr = {1,1,1,3};
-        int rav = arr[0];
+    //7. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
+    // метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
+    private static boolean equals() {
+        int[] arr = {5,6,1,1,4,16,1};
+        boolean rav = false;
         int pr = 0;
+        int sum = 0;
+        int lev = 0;
 
-        for (int num : arr) {
-            if () {
-                pr += num;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        for (int i = 0; i < arr.length; i++) {
+            lev += arr[i];
+            pr = sum  - lev;
+            if (lev == pr){
+                rav = true;
+                System.out.printf("Найдено равенство на элементе: %d,%nCумма полвин: %d%n", i, lev);
             }
         }
+        return rav;
     }
 
 
+    //8. *** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным),
+    // при этом метод должен сместить все элементы массива на n позиций.
+    private static void shift() {
+        System.out.println("____________________________________");
+        int n = -1;
+        int arr[] = {1,2,3,4,5,6};
+
+        if (n > 0) {
+            for (int i = 0; i < n; i++) {
+                int sdvig = arr[arr.length - 1];
+
+                for (int j = arr.length - 1; j > 0; j--) {
+                    arr[j] = arr[j - 1];
+                }
+                arr[0] = sdvig;
+            }
+        } else {
+            for (int i = 0; i > n; i--) {
+                int sdvig = arr[0];
+                for (int j = 1; j < arr.length; j++) {
+                    arr[j-1] = arr[j];
+                }
+                arr[arr.length - 1] = sdvig;
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+           System.out.printf("%2d ", arr[i]);
+
+        }
+        System.out.println();
+        System.out.println("____________________________________ =)");
+    }
 }
