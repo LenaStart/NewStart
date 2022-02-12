@@ -19,7 +19,8 @@ public class HomeWorkApp {
         }
     //1. Проверка суммы переменных и возврат результата проверки булево
             public static boolean numberСheck (int a, int b) {
-                return a+b >= 10 && a+b <= 20;
+
+            return a+b >= 10 && a+b <= 20;
             }
         //2. Положительное число или отрицательное
             public static String posNegNum(int i) {
