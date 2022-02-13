@@ -12,10 +12,11 @@ public class XO {
     private static int SIZE = 3; // размерность поля
     private static final char DOT_EMPTY = '●'; //свободное поле
     private static final char DOT_X = 'X'; //крестик
-    private static final char DOT_O = 'Ѻ';//нолик
+    private static final char DOT_O = '0';//нолик
     private static char[][] map = new char[SIZE][SIZE]; //матрица игры
     private static final char NOOK = '►'; //угловой символ
     private static final String BETWEEN = " "; //промежуточный символ
+    //private static int numberOfMoves;
 
 
     public static void start() {
@@ -63,10 +64,14 @@ public class XO {
             while (true) {
                 playerTurn(); //1. ход игрока
                 printMap();  //2. вывод на печать
-                testFin();  // 3. проверка окончания
-                playerComp(); // 4. ход компьютера
+                if (testFin(DOT_X)) {// 3. проверка окончания
+                    break;
+                }
+                compTurn(); // 4. ход компьютера
                 printMap();  //5. вывод на печать
-                //testFin();  // 6. проверка окончания
+                if (testFin(DOT_O)) {// 6. проверка окончания
+                    break;
+                }
                 //playerTurn(); // 7. возврат к 1
             }
     }
@@ -87,6 +92,7 @@ public class XO {
             }
         }
         map[lineNum][columnNum] = DOT_X;
+        //numberOfMoves++;
     }
 
     private static int chekTurnPlayer() {
@@ -105,26 +111,68 @@ public class XO {
         }
     }
 
-    private static void playerComp() {
+    private static void compTurn() {
         System.out.println("Ход компьютера");
         int lineNum;
         int columnNum;
         while (true) {
-            lineNum = random.nextInt(1, 4) - 1;
-            columnNum = random.nextInt(1, 4) - 1;
+            lineNum = random.nextInt(SIZE);
+            columnNum = random.nextInt(SIZE);
 
                 if (itIsEmpty(lineNum, columnNum)) {
                     break;
                 }
         }
+
+        /*do {
+            lineNum = random.nextInt(SIZE);
+            columnNum = random.nextInt(SIZE);
+        } while (!itIsEmpty(lineNum, columnNum));*/
+
         map[lineNum][columnNum] = DOT_O;
+        //numberOfMoves++;
     }
 
     private static boolean itIsEmpty(int lineNum, int columnNum) {
         return map[lineNum][columnNum] == DOT_EMPTY;
     }
 
-    private static void testFin() {
+    private static boolean testFin(char s) {
+        if (victory(s)){
+            if (s == DOT_X) {
+                System.out.println("Игрок победил.");
+            } else {
+                System.out.println("Победил компьютер.");
+            }
+            return true;
+        }
+        if (standoff(s)){
+            System.out.println("Ничья.");
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean victory(char s) {
+        
+        return false;
+    }
+
+    private static boolean standoff(char s) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (map[i][j] == DOT_EMPTY) {
+                    return false;
+                }
+            }
+        }
+        return true;
+        //return numberOfMoves >= SIZE * SIZE;
+    }
+
+
+
+   /*private static boolean testFin() {
        while (true) {
             for (int i = 0; i < SIZE; i++) {
                 for (int j = 0; j < SIZE; j++) {
@@ -135,7 +183,7 @@ public class XO {
             }
         }
         //System.out.println("Игра окончена");
-    }
+    }*/
 
 
 
