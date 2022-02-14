@@ -7,23 +7,44 @@ import java.util.Scanner;
 public class XO {
 
     //блок настроек игры
-    private static final Scanner in = new Scanner(System.in);
-    private static final Random random = new Random();
-    private static int SIZE = 3; // размерность поля
+    private static final Scanner in = new Scanner(System.in); // ход игрока
+    private static final Random random = new Random(); // ход компьютера
+    private static int SIZE; // размерность поля
+    private static int winSize; // кол-во ячеек одного символа подряд для победы
     private static final char DOT_EMPTY = '●'; //свободное поле
     private static final char DOT_X = 'X'; //крестик
     private static final char DOT_O = '0';//нолик
-    private static char[][] map = new char[SIZE][SIZE]; //матрица игры
+    private static char[][] map; //матрица игры
     private static final char NOOK = '►'; //угловой символ
     private static final String BETWEEN = " "; //промежуточный символ
     //private static int numberOfMoves;
+    private static int lastX;
+    private static int lastY;
+
+
 
 
     public static void start() {
-        fillMap(); //заполняем матрицу
-        printMap(); //выводим на экран
-        startGame(); //запуск игры
+        do {
+            init(); //размерность игрового поля
+            printMap(); //выводим на экран
+            startGame(); //запуск игры
+        }
+        while (continueGame());
+            finGame();
+
     }
+
+    private static void init() {
+        /*Scanner it = new Scanner(System.in);
+        System.out.println("Задайте размер игрового поля от 1 до 9");
+        SIZE = it.nextInt();*/
+        SIZE = 3;
+        winSize = 3;
+        map  = new char[SIZE][SIZE];
+        fillMap(); //заполняем игровое поле
+    }
+
 
     private static void fillMap() {
         for (int i = 0; i < SIZE; i++) {
@@ -46,6 +67,7 @@ public class XO {
         for (int i = 0; i < SIZE; i++) {
             col[i] = i+1;
             System.out.print(col[i] + BETWEEN);
+            //System.out.printf("%2d%c",i + 1, BETWEEN);
         }
     }
 
@@ -54,6 +76,9 @@ public class XO {
         for (int i = 0; i < SIZE; i++) {
             System.out.print(i + 1 + BETWEEN);
             for (int j = 0; j < SIZE; j++) {
+                /*if (j <= 8) {
+                    System.out.printf("%2d ", map[i][j]);
+                } else*/
                 System.out.print(map[i][j] + BETWEEN);
             }
             System.out.println();
@@ -72,7 +97,6 @@ public class XO {
                 if (testFin(DOT_O)) {// 6. проверка окончания
                     break;
                 }
-                //playerTurn(); // 7. возврат к 1
             }
     }
 
@@ -93,6 +117,8 @@ public class XO {
         }
         map[lineNum][columnNum] = DOT_X;
         //numberOfMoves++;
+        lastX = lineNum;
+        lastY = columnNum;
     }
 
     private static int chekTurnPlayer() {
@@ -131,6 +157,8 @@ public class XO {
 
         map[lineNum][columnNum] = DOT_O;
         //numberOfMoves++;
+        lastX = lineNum;
+        lastY = columnNum;
     }
 
     private static boolean itIsEmpty(int lineNum, int columnNum) {
@@ -154,7 +182,22 @@ public class XO {
     }
 
     private static boolean victory(char s) {
-        
+        System.out.printf("координата Х - %d, координата У - %d%n",lastX, lastY);
+        int n = 0;
+
+            if (map[lastX][lastY] == DOT_X) {
+                for (int i = 0; i < SIZE; i++) {
+                    if (map[lastX][i] == DOT_X) {
+                        n++;
+                    } else {
+                    n = 0;
+                    }
+                    if (n == winSize) {
+                        return true;
+                    }
+            }
+        }
+
         return false;
     }
 
@@ -170,22 +213,25 @@ public class XO {
         //return numberOfMoves >= SIZE * SIZE;
     }
 
+    private static boolean continueGame() {
+        System.out.println("Продолжаем? y/n");
+        return switch (in.next()) {
+            case "y", "да", "yes", "ok", "хочу" -> true;
+            default -> false;
+        };
+    }
 
+    private static void finGame() {
+        in.close();
+        System.out.println("Игра окончена");
+    }
 
-   /*private static boolean testFin() {
-       while (true) {
-            for (int i = 0; i < SIZE; i++) {
-                for (int j = 0; j < SIZE; j++) {
-                    if (map[i][j] == DOT_EMPTY) {
-                        break;
-                    }
-                }
-            }
-        }
-        //System.out.println("Игра окончена");
+    public static int getWinSize() {
+        return winSize;
+    }
+
+    /*public static void setWinSize(int winSize) {
+        XO.winSize = winSize;
     }*/
-
-
-
 }
 
