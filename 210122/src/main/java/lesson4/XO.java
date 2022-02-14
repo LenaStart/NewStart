@@ -37,16 +37,16 @@ public class XO {
 
     private static void init() {
         Scanner it = new Scanner(System.in);
-        System.out.println("Задайте размер игрового поля от 1 до 9");
+        System.out.println("Задайте размер игрового поля от 3 до 9");
         SIZE = it.nextInt();
-        spotWinSize();
+        spotWinSize(); //установка кол-во ячеек одного символа подряд для победы
         //SIZE = 3;
-        map  = new char[SIZE][SIZE];
+        map  = new char[SIZE][SIZE];  //инициализация матрицы игры
         fillMap(); //заполняем игровое поле
     }
 
     private static void spotWinSize() {
-        if (SIZE <= 5 && SIZE >= 5) {
+        if (SIZE <= 5 && SIZE >= 3) {
             winSize = 3;
         } else if (SIZE <= 6 && SIZE >= 10) {
             winSize = 4;
@@ -98,11 +98,13 @@ public class XO {
             while (true) {
                 playerTurn(); //1. ход игрока
                 printMap();  //2. вывод на печать
+
                 if (testFin(DOT_X)) {// 3. проверка окончания
                     break;
                 }
                 compTurn(); // 4. ход компьютера
                 printMap();  //5. вывод на печать
+
                 if (testFin(DOT_O)) {// 6. проверка окончания
                     break;
                 }
@@ -182,7 +184,7 @@ public class XO {
             }
             return true;
         }
-        if (standoff(s)){
+        if (standoff()){
             System.out.println("Ничья.");
             return true;
         }
@@ -192,29 +194,81 @@ public class XO {
     private static boolean victory(char s) {
         //System.out.printf("координата Х - %d, координата У - %d%n",lastX, lastY);
         int n = 0;
+        int firstSymbolI;
+        int firstSymbolJ;
 
-        if (chekXLineWin(n) || chekXColWin(n)) return true;
-        return false;
-        /*for (int i = lastX; i < SIZE; i++) {
-            for (int j = lastY; j < SIZE; j++) {
-                if (j == SIZE-1) {
-                    int g = j;
-                    int h = i;
-
-
-                    System.out.printf("g - %d, h - %d",g,h);
-                    *//*for (int k = 0; k < ; k++) {
-
-                    }*//*
-
-                }return true;
+        /*if (chekXLineWin(n) || chekXColWin(n)) return true;
+        return false;*/
+        /*for (int i = lastX; i == 0; i--) {
+            for (int j = lastY; j == 0; j-- ) {
+                if (i == 0 || j == 0) {
+                    firstSymbolI = i;
+                    firstSymbolJ = j;
+                }
             }
+        }return true;*/
 
-        }*/
+    /*        if (map[lastX][lastY] == s) {
+                for (int i = 0; i < SIZE; i++) {
+                    if (map[i][lastY] == s) {
+                        n++;
+                    } else {
+                        n = 0;
+                    }
+                    if (n == winSize) {
+                        return true;
+                    }
+                }
+            } else {
+                for (int i = 0; i < SIZE; i++) {
+                    if (map[lastX][i] == s) {
+                        n++;
+                    } else {
+                        n = 0;
+                    }
+                    if (n == winSize) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+*/
 
+            if (map[lastX][lastY] == DOT_X) {
+                for (int i = 0; i < SIZE; i++) {
+                    if (map[i][lastY] == DOT_X) {
+                        n++;
+                    } else if (map[lastX][i] == DOT_X) {
+                        n++;
+                    } else {
+                        n = 0;
+                    }
+                    if (n == winSize) {
+
+                        return true;
+                    }
+                }
+            } if (map[lastX][lastY] == DOT_O) {
+            for (int i = 0; i < SIZE; i++) {
+                if (map[i][lastY] == DOT_O) {
+                    n++;
+                } else if (map[lastX][i] == DOT_O) {
+                    n++;
+                } else {
+                    n = 0;
+                }
+                if (n == winSize) {
+
+                    return true;
+                }
+            }
+        }
+            return false;
     }
 
-    private static boolean chekXColWin(int n) {
+
+
+   /*private static boolean chekXColWin(int n) {
         if (map[lastX][lastY] == DOT_X) {
             for (int i = 0; i < SIZE; i++) {
                 if (map[i][lastY] == DOT_X) {
@@ -244,9 +298,9 @@ public class XO {
             }
         }
         return false;
-    }
+    }*/
 
-    private static boolean standoff(char s) {
+    private static boolean standoff() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (map[i][j] == DOT_EMPTY) {

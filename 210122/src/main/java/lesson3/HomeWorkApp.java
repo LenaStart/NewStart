@@ -124,7 +124,24 @@ public class HomeWorkApp {
         int max = minmax[0];
         int min = minmax[0];
 
-        for (int num : minmax) {
+        for (int i = 0; i < minmax.length; i++) {
+            if (minmax[i] > max) {
+                max = minmax[i];
+            } else if (minmax[i] < min) {
+                min = minmax[i];
+            }
+
+            min = Math.min(min, minmax[i]);
+            max = Math.max(max, minmax[i]);
+
+        }
+
+        Arrays.sort(minmax);
+        min = minmax[0];
+        max = minmax[minmax.length-1];
+
+
+        /*for (int num : minmax) {
             if (num > max) {
                 max = num;
             }
@@ -133,7 +150,7 @@ public class HomeWorkApp {
             if (num < min) {
                 min = num;
             }
-        }
+        }*/
         System.out.printf("Минимальный элемент массива: %d%nМаксимальный элемент массива: %d %n", min, max);
         System.out.println("____________________________________");
     }
@@ -159,6 +176,23 @@ public class HomeWorkApp {
             }
         }
         return rav;
+
+        /*int sumLeft = 0;
+        int sumRight = sum (arr, 0, arr.length);
+
+        if (sumRight % 2 != 0) {
+            return false;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            sumLeft += arr[i];
+            sumRight -= arr[i];
+            if (sumLeft == sumRight) {
+                return true;
+            }
+
+        }*/
+
     }
 
     //8. *** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным),
