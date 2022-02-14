@@ -185,19 +185,40 @@ public class XO {
         System.out.printf("координата Х - %d, координата У - %d%n",lastX, lastY);
         int n = 0;
 
-            if (map[lastX][lastY] == DOT_X) {
-                for (int i = 0; i < SIZE; i++) {
-                    if (map[lastX][i] == DOT_X) {
-                        n++;
-                    } else {
+        if (chekXLineWin(n) || chekXColWin(n)) return true;
+        return false;
+
+    }
+
+    private static boolean chekXColWin(int n) {
+        if (map[lastX][lastY] == DOT_X) {
+            for (int i = 0; i < SIZE; i++) {
+                if (map[i][lastY] == DOT_X) {
+                    n++;
+                } else {
                     n = 0;
-                    }
-                    if (n == winSize) {
-                        return true;
-                    }
+                }
+                if (n == winSize) {
+                    return true;
+                }
             }
         }
+        return false;
+    }
 
+    private static boolean chekXLineWin(int n) {
+        if (map[lastX][lastY] == DOT_X) {
+            for (int i = 0; i < SIZE; i++) {
+                if (map[lastX][i] == DOT_X) {
+                    n++;
+                } else {
+                    n = 0;
+                    }
+                if (n == winSize) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
