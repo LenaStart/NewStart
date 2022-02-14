@@ -197,8 +197,10 @@ public class XO {
         int firstSymbolI;
         int firstSymbolJ;
 
-        /*if (chekXLineWin(n) || chekXColWin(n)) return true;
-        return false;*/
+        if (chekXLineWinPlayer(n) || chekXColWinPlayer(n)) {
+            return true;
+        } else if (chekXColWinComp(n) || chekXLineWinComp())
+        return false;
         /*for (int i = lastX; i == 0; i--) {
             for (int j = lastY; j == 0; j-- ) {
                 if (i == 0 || j == 0) {
@@ -208,33 +210,7 @@ public class XO {
             }
         }return true;*/
 
-    /*        if (map[lastX][lastY] == s) {
-                for (int i = 0; i < SIZE; i++) {
-                    if (map[i][lastY] == s) {
-                        n++;
-                    } else {
-                        n = 0;
-                    }
-                    if (n == winSize) {
-                        return true;
-                    }
-                }
-            } else {
-                for (int i = 0; i < SIZE; i++) {
-                    if (map[lastX][i] == s) {
-                        n++;
-                    } else {
-                        n = 0;
-                    }
-                    if (n == winSize) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-*/
-
-            if (map[lastX][lastY] == DOT_X) {
+            /*if (map[lastX][lastY] == DOT_X) {
                 for (int i = 0; i < SIZE; i++) {
                     if (map[i][lastY] == DOT_X) {
                         n++;
@@ -248,27 +224,45 @@ public class XO {
                         return true;
                     }
                 }
-            } if (map[lastX][lastY] == DOT_O) {
+            }*/
+
+        return ;
+    }
+
+    private static boolean chekXLineWinComp(int n) {
+        if (map[lastX][lastY] == DOT_O) {
             for (int i = 0; i < SIZE; i++) {
-                if (map[i][lastY] == DOT_O) {
-                    n++;
-                } else if (map[lastX][i] == DOT_O) {
+                if (map[lastX][i] == DOT_O) {
                     n++;
                 } else {
                     n = 0;
                 }
                 if (n == winSize) {
-
                     return true;
                 }
             }
         }
-            return false;
+        return false;
     }
 
+    private static boolean chekXColWinComp(int n) {
+        if (map[lastX][lastY] == DOT_O) {
+            for (int i = 0; i < SIZE; i++) {
+                if (map[i][lastY] == DOT_O) {
+                    n++;
+                } else {
+                    n = 0;
+                }
+                if (n == winSize) {
+                    return true;
+                }
+            }
 
+        }
+        return false;
+    }
 
-   /*private static boolean chekXColWin(int n) {
+    private static boolean chekXColWinPlayer(int n) {
         if (map[lastX][lastY] == DOT_X) {
             for (int i = 0; i < SIZE; i++) {
                 if (map[i][lastY] == DOT_X) {
@@ -284,7 +278,7 @@ public class XO {
         return false;
     }
 
-    private static boolean chekXLineWin(int n) {
+    private static boolean chekXLineWinPlayer(int n) {
         if (map[lastX][lastY] == DOT_X) {
             for (int i = 0; i < SIZE; i++) {
                 if (map[lastX][i] == DOT_X) {
@@ -298,7 +292,7 @@ public class XO {
             }
         }
         return false;
-    }*/
+    }
 
     private static boolean standoff() {
         for (int i = 0; i < SIZE; i++) {
