@@ -36,15 +36,24 @@ public class XO {
     }
 
     private static void init() {
-        /*Scanner it = new Scanner(System.in);
+        Scanner it = new Scanner(System.in);
         System.out.println("Задайте размер игрового поля от 1 до 9");
-        SIZE = it.nextInt();*/
-        SIZE = 3;
-        winSize = 3;
+        SIZE = it.nextInt();
+        spotWinSize();
+        //SIZE = 3;
         map  = new char[SIZE][SIZE];
         fillMap(); //заполняем игровое поле
     }
 
+    private static void spotWinSize() {
+        if (SIZE <= 5 && SIZE >= 5) {
+            winSize = 3;
+        } else if (SIZE <= 6 && SIZE >= 10) {
+            winSize = 4;
+        } else {
+            winSize = 5;
+        }
+    }
 
     private static void fillMap() {
         for (int i = 0; i < SIZE; i++) {
@@ -149,7 +158,6 @@ public class XO {
                     break;
                 }
         }
-
         /*do {
             lineNum = random.nextInt(SIZE);
             columnNum = random.nextInt(SIZE);
@@ -182,11 +190,27 @@ public class XO {
     }
 
     private static boolean victory(char s) {
-        System.out.printf("координата Х - %d, координата У - %d%n",lastX, lastY);
+        //System.out.printf("координата Х - %d, координата У - %d%n",lastX, lastY);
         int n = 0;
 
         if (chekXLineWin(n) || chekXColWin(n)) return true;
         return false;
+        /*for (int i = lastX; i < SIZE; i++) {
+            for (int j = lastY; j < SIZE; j++) {
+                if (j == SIZE-1) {
+                    int g = j;
+                    int h = i;
+
+
+                    System.out.printf("g - %d, h - %d",g,h);
+                    *//*for (int k = 0; k < ; k++) {
+
+                    }*//*
+
+                }return true;
+            }
+
+        }*/
 
     }
 
@@ -247,9 +271,9 @@ public class XO {
         System.out.println("Игра окончена");
     }
 
-    public static int getWinSize() {
+    /*public static int getWinSize() {
         return winSize;
-    }
+    }*/
 
     /*public static void setWinSize(int winSize) {
         XO.winSize = winSize;
