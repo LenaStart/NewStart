@@ -1,21 +1,23 @@
 package lesson5;
 
+import java.util.Locale;
+
 public class Player {
     //задаём свойства класса
     String nickname;
-    int point;
     int level;
+    int point;
     int many;
 
-    public Player(String nickname, int point, int level, int many) { //вызвать Constructor -> лев. Alt + Insert выбрать нужные св-ва
-        this.nickname = nickname;
-        this.point = point;
+    public Player(String nickname,int level, int point, int many) { //вызвать Constructor -> лев. Alt + Insert выбрать нужные св-ва
+        this.nickname = nickname.toUpperCase(); //сделать большими буквами
         this.level = level;
-        this.many = many;
+        this.point = point;
+        this.many = Math.abs(many);  //полжительное, больше 0
     }
 
     public Player(String nickname) {  // урезанная версия конструктора для варианта когда при согдании объекта, свойства неизвестны и заданы по-умолчанию
-        this(nickname, 0, 0, 10); //обращение у полному конструктору через this()
+        this(nickname, 1, 0, 100); //обращение у полному конструктору через this()
     }
 
     @Override // вызвать toString -> лев. Alt + Insert

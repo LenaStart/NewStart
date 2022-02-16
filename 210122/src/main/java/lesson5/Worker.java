@@ -29,7 +29,7 @@ public class Worker {
                 ", ЗП = " + pay +
                 ", Возраст = " + age +
                 '}';*/
-        return String.format("Сотрудник %s работающий на должности %s с зарплатой в %d в возрасте %d к которому вы можете обратиться по Email %s или по телефону %s", fullName, position, pay, age, email, phone);
+        return String.format("Сотрудник %s работающий на должности %s с зарплатой в %d в возрасте %d к которому вы можете обратиться по Email: %s или по телефону: %s", fullName, position, pay, age, email, phone);
     }
 
     public void printSelection () {
