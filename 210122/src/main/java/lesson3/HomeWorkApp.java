@@ -202,18 +202,18 @@ public class HomeWorkApp {
         int n = -1;
         int arr[] = {1,2,3,4,5,6};
 
-        if (n > 0) {
+        if (n > 0) { //сдвиг вправо
             for (int i = 0; i < n; i++) {
-                int sdvig = arr[arr.length - 1];
+                int sdvig = arr[arr.length - 1]; //запоминаем последний элемент массива, чтобы портом положить его на первое место
 
                 for (int j = arr.length - 1; j > 0; j--) {
                     arr[j] = arr[j - 1];
                 }
                 arr[0] = sdvig;
             }
-        } else {
+        } else {  //сдвиг влево
             for (int i = 0; i > n; i--) {
-                int sdvig = arr[0];
+                int sdvig = arr[0];  //запоминаем первый элемент массива, чтобы портом положить его на первое место
                 for (int j = 1; j < arr.length; j++) {
                     arr[j-1] = arr[j];
                 }

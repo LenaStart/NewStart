@@ -197,10 +197,11 @@ public class XO {
         int firstSymbolI;
         int firstSymbolJ;
 
-        if (chekXLineWinPlayer(n) || chekXColWinPlayer(n)) {
+       /* if (chekXLineWinPlayer(n) || chekXColWinPlayer(n)) {
             return true;
         } else if (chekXColWinComp(n) || chekXLineWinComp())
-        return false;
+        return false;*/
+
         /*for (int i = lastX; i == 0; i--) {
             for (int j = lastY; j == 0; j-- ) {
                 if (i == 0 || j == 0) {
@@ -226,7 +227,7 @@ public class XO {
                 }
             }*/
 
-        return ;
+        return false;
     }
 
     private static boolean chekXLineWinComp(int n) {
