@@ -12,8 +12,8 @@ public class Main {
         /*player1.level = 10;
         player2.level = 80;
 
-        player1.many = 1220;
-        player2.many = 1800;
+        player1.money = 1220;
+        player2.money = 1800;
 
         player1.point = 1200000;
         player2.point = 2000000;*/
@@ -25,10 +25,30 @@ public class Main {
         //System.out.println(player1);
         //System.out.println(player2);
 
-        player1.printInfo();
+        /*player1.printInfo();
         player2.printInfo();
-        player3.printInfo();
+        player3.printInfo();*/
 
+        /*Player[] players = {player1,player2,player3};
+        for (Player player : players) {
+            if (player.point > 3000) {
+                player.level++;
+                player.printInfo();
+            } else {
+                System.out.println("У игрока  " + player.nickname + " недостаточно очков для перехода на следующий уровень");
+            }
+        }*/
+
+        Player[] players = {player1,player2,player3};
+        for (Player player : players) {
+            if (player.getPoint() > 3000) {
+                player.setLevel(player.getLevel() + 1);
+                player.printInfo();
+            } else {
+                System.out.println("У игрока  " + player.getNickname() + " недостаточно очков для перехода на следующий уровень");
+            }
+        }
+        System.out.println("Общеее количество игроков: " + Player.getPlayersCount());
     }
 
 }
