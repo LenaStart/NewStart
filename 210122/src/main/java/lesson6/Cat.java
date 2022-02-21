@@ -11,15 +11,13 @@ public class Cat extends Animal {
     }
 
     @Override
-    public int getRun() {
-        if (super.getRun() > 200) {
-            System.out.println("Не верно. Кот не может пробежать больше 200 метров!");
-        } else {
-            this.setRun(super.getRun());
-        }
-            return this.getRun();
-
-        //return super.getRun();
+    public void setRun(int run) {
+        /*if (run > 200) {
+            System.out.println("ОШИБКА! Кот не может пробежать больше 200 метров!");
+            run = 0;
+            super.setRun(run);
+        }*/
+        super.setRun(run);
     }
 
     public static int getNumberOfCat() {
