@@ -19,14 +19,10 @@ public class CatEat {
                 cat.appetite = 0;
                 cat.setFulness(true);
                 System.out.println("Кот " + cat.name + " наелся и спит =) " +  cat.isFulness());
-                //System.out.println("Кот насытился " );
             } else if (cat.appetite != 0) {
                 cat.setFulness(false);
                 System.out.println("Кот " + cat.name + " всё ещё голоден =( " + cat.isFulness());
-
-                //System.out.println(cat.isFulness());
             }
         }
     }
-
 }
