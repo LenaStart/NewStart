@@ -1,5 +1,7 @@
 package lesson6;
 
+import java.util.Objects;
+
 public abstract class Player {
 
     private String nickname;
@@ -9,7 +11,7 @@ public abstract class Player {
     /*public Player() {
     }*/
 
-    public Player(String nickname, String rusName, int points) {
+    public Player(String nickname, int points, String rusName) {
         this.nickname = nickname;
         this.rusProfTitle = rusName;
         this.points = points;
@@ -50,4 +52,22 @@ public abstract class Player {
 
     public abstract void action();
 
+    /*@Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }*/
+
+    @Override
+    public boolean equals(Object o) { //Alt+Ins сравнение не ссылок на string объекты, а их содержимого
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        //return Objects.equals(nickname, player.nickname); //стандартная реализация
+        return nickname.equals((player.nickname)); //или так
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nickname);
+    }
 }

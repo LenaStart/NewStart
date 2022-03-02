@@ -4,13 +4,13 @@ public class Knight extends Player { //наследование свойств �
 
     private String weapon;
 
-    public Knight(String nickname, String rusName, int points, String weapon) {
-        super(nickname, rusName, points); //наследование из класса родителя ВСЕГДА должно быть первой строкой
+    public Knight(String nickname, int points, String weapon) {
+        super(nickname, points, "Рыцарь"); //наследование из класса родителя ВСЕГДА должно быть первой строкой
         this.weapon = weapon;
     }
 
-    public Knight(String nickname, String rusName, int points) {
-        this(nickname, rusName, points, "Стилет"); //дефолтное значение 4 аргумента, если не задано при инициализации
+    public Knight(String nickname, int points) {
+        this(nickname, points,"Стилет"); //дефолтное значение 4 аргумента, если не задано при инициализации
     }
 
     public String getWeapon() {

@@ -12,8 +12,11 @@ public class MyAnimal {
         Dog dog3 = new Dog("Зверь", 1063, 20);
 
         //cat1.setRun(200);
+        run(cat1); // использование полиморфизма
 
-        Animal[] animals = {cat1,cat2,cat3,cat4};
+
+
+        /*Animal[] animals = {cat1,cat2,cat3,cat4};
         for (Animal animal: animals) {
             if (animal.getRun() > 200) {
                 System.out.println("Немыслимо! Кот " + animal.getName() + " не мог пробежать " + animal.getRun() +  " метров!");
@@ -28,7 +31,7 @@ public class MyAnimal {
                 animal.setSwim(animal.getSwim());
             }
             animal.printInfo();
-        }
+        }*/
 
        /* cat1.printInfo();
         cat2.printInfo();
@@ -60,5 +63,10 @@ public class MyAnimal {
 
         System.out.printf("В забеге учавствовало: %d животных.\nИз них %d кошек и %d собаки.\n",Animal.getNumberOfAnimals(), Cat.getNumberOfCat(),Dog.getNumberOfDog());
         System.out.println("_______________________________________________");
+    }
+
+    public static void run (Animal animal) {
+        animal.setRun(205);
+
     }
 }
