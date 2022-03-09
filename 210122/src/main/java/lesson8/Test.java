@@ -1,9 +1,9 @@
 package lesson8;
 
 public class Test {
-    Human human = new Human(100, 200);
-    Cat cat = new Cat(100, 200);
-    Robot robot = new Robot(100, 200);
+    Human human = new Human();
+    Cat cat = new Cat();
+    Robot robot = new Robot();
 
     Treadmill treadmill1 = new Treadmill(1);
     Treadmill treadmill2 = new Treadmill(2);

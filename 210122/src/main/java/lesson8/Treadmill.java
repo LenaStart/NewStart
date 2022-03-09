@@ -1,6 +1,6 @@
 package lesson8;
 
-public class Treadmill implements Obstacles{
+public class Treadmill {
 
     private  int lenght;
 

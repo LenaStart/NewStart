@@ -1,6 +1,6 @@
 package lesson8;
 
-public class Wall implements Obstacles{
+public class Wall {
 
     private int height;
 
