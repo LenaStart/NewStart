@@ -25,6 +25,4 @@ public class Cat implements Actions{
     public String toString() {
         return name;
     }
-
-
 }
