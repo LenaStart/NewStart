@@ -2,12 +2,28 @@ package lesson8;
 
 public class Human implements Actions{
 
-    @Override
-    public void jump() {
+    private final String name;
+    private final int maxjumpHeight;
+    private final int maxRunLength;
+
+    public Human(String name, int maxjumpHeight, int maxRunLength) {
+        this.name = name;
+        this.maxjumpHeight = maxjumpHeight;
+        this.maxRunLength = maxRunLength;
     }
 
-    @Override
-    public void run() {
+    public int run() {
+        System.out.println("Участник " + this.name + " пробежал " + this.maxRunLength + " метров");
+        return this.maxRunLength;
+    }
+
+    public int jump() {
+        System.out.println("Участник " + this.name + " прыгнул на " + this.maxjumpHeight + " метра");
+        return this.maxjumpHeight;
+    }
+
+    public String toString() {
+        return name;
     }
 
 }

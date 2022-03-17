@@ -1,5 +1,5 @@
 package lesson8;
 
 public interface Jumping {
-    void jump();
+    int jump();
 }
