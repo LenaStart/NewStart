@@ -32,7 +32,7 @@ public class Test {
             for (int j = 0; j < obstacles.length; j++) {
                 can = obstacles[j].participantCan(actions[i]);
                 if (!can) {
-                    System.out.println("Участник выбыл");
+                    System.out.println("Участник " + actions[i]+ " выбыл");
                     break;
                 }
             }
