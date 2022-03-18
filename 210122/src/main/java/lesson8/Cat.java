@@ -13,12 +13,12 @@ public class Cat implements Actions{
     }
 
     public int run() {
-        System.out.println("Кот " + this.name + " пробежал " + this.maxRunLength + " метров");
+        //System.out.println("Кот " + this.name + " пробежал дорожку");// + this.maxRunLength + " метров");
         return this.maxRunLength;
     }
 
     public int jump() {
-        System.out.println("Кот " + this.name + " прыгнул на " + this.maxjumpHeight + " метра");
+        //System.out.println("Кот " + this.name + " прыгнул стену ");// на " + this.maxjumpHeight + " метра");
         return this.maxjumpHeight;
     }
 

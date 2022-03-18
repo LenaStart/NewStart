@@ -13,12 +13,12 @@ public class Human implements Actions{
     }
 
     public int run() {
-        System.out.println("Участник " + this.name + " пробежал " + this.maxRunLength + " метров");
+        //System.out.println("Участник " + this.name + " пробежал дорожку");// + this.maxRunLength + " метров");
         return this.maxRunLength;
     }
 
     public int jump() {
-        System.out.println("Участник " + this.name + " прыгнул на " + this.maxjumpHeight + " метра");
+        //System.out.println("Участник " + this.name + " перепрыгну стену");// + this.maxjumpHeight + " метра");
         return this.maxjumpHeight;
     }
 

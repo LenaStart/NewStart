@@ -10,11 +10,11 @@ public class Wall implements Obstruction {
 
     @Override
     public boolean participantCan(Actions actions) {
-        if (actions.jump() > this.height) {
-            System.out.println("Участник " + actions + " перепрыгнул препятствие");
+        if (actions.jump() >= this.height) {
+            System.out.println("Участник " + actions + " перепрыгнул препятствие " + this.height);
             return true;
         } else {
-            System.out.println("Участник " + actions + " споткнулся");
+            System.out.println("Участник " + actions + " споткнулся на отметке " + this.height);
             return false;
         }
     }

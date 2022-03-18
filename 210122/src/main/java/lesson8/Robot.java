@@ -13,12 +13,12 @@ public class Robot implements Actions{
     }
 
     public int run() {
-        System.out.println("Робот " + this.name + " пробежал " + this.maxRunLength + " метров");
+        //System.out.println("Робот " + this.name + " пробежал дорожку");// + this.maxRunLength + " метров");
         return this.maxRunLength;
     }
 
     public int jump() {
-        System.out.println("Робот " + this.name + " прыгнул на " + this.maxjumpHeight + " метра");
+        //System.out.println("Робот " + this.name + " прыгнул стену");// на " + this.maxjumpHeight + " метра");
         return this.maxjumpHeight;
     }
 
